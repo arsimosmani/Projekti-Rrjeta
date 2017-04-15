@@ -1,11 +1,11 @@
 from socket import *
 import time
-from random import randint
+from random import randint 
 
 print("UP-FIEK")
 print("Rrjeta Kompjuterike")
 print("TCP Server")
-print("-----------------------\n")
+print("-------------------------\n")
 
 serverPort = 9000
 serverSocket = socket(AF_INET,SOCK_STREAM)
