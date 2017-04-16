@@ -5,7 +5,7 @@ from random import randint
 print("UP-FIEK")
 print("Rrjeta Kompjuterike")
 print("TCP Server")
-print("-----------------------\n")
+print("------------------------\n")
 
 serverPort = 9000
 serverSocket = socket(AF_INET,SOCK_STREAM)
@@ -67,6 +67,10 @@ def faktoriel(n):
         rez *= n
         n -= 1
     return rez
+def reverse(text):
+    if len(text)<=1:
+        return text
+    return reverse(text[1:])+text[0]
          
 mesazhiIP =str(getIP())
 mesazhiPORT = str(serverPort)
@@ -104,6 +108,10 @@ while 1:
         numri1=int(numri)
         mesazhiKONVERTO=str(konverto(opcioni,numri1))
         connectionSocket.send(mesazhiKONVERTO.encode('ASCII'))
+    elif (opcioni=="PRINTO"):
+        connectionSocket.send("Jep tekstin:".encode("ASCII"))
+        text=connectionSocket.recv(1024).decode("ASCII")
+        connectionSocket.send(str(reverse(text)).encode("ASCII"))
     else:
         connectionSocket.send(mesazhinull.encode('ASCII'))
     connectionSocket.close()
