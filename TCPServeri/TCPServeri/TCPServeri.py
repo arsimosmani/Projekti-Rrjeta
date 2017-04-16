@@ -32,6 +32,11 @@ def getKeno():
     keno=[randint(0,80) for i in range (0,20)]
     for n in range(20):
         return keno
+    
+def reverse(text):
+    if len(text)<=1:
+        return text
+    return reverse(text[1:])+text[0]
         
 #funksioni per opcionin konverto 
 def konverto(opcioni,numri):
@@ -104,6 +109,10 @@ while 1:
         numri1=int(numri)
         mesazhiKONVERTO=str(konverto(opcioni,numri1))
         connectionSocket.send(mesazhiKONVERTO.encode('ASCII'))
+    elif (opcioni=="PRINTO"):
+        connectionSocket.send("Jep tekstin:".encode("ASCII"))
+        text=connectionSocket.recv(1024).decode("ASCII")
+        connectionSocket.send(str(reverse(text)).encode("ASCII"))
     else:
         connectionSocket.send(mesazhinull.encode('ASCII'))
     connectionSocket.close()
