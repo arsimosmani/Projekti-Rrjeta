@@ -71,13 +71,13 @@ elif opcioniUP=="KONVERTO":
         #thirrja e funksionit per dergim dhe pranim te te dhenave me serverin 
         konvertoServer()
 elif opcioniUP=="PRINTO":
-     clientSocket.send(opcioniUP.encode("ASCII"))
-        print(clientSocket.recv(1024).decode("ASCII"))
-        text=input()
-        clientSocket.send(text.encode("ASCII"))
-     print("rez :"+clientSocket.recv(1024).decode("ASCII"))
-    else:
-        konvertoServer()
+    clientSocket.send(opcioniUP.encode("ASCII"))
+    print(clientSocket.recv(1024).decode("ASCII"))
+    text=input()
+    clientSocket.send(text.encode("ASCII"))
+    print("rez :"+clientSocket.recv(1024).decode("ASCII"))
+else:
+     konvertoServer()
 
 
 
