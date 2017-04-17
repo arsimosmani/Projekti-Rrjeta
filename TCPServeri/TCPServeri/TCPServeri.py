@@ -37,6 +37,16 @@ def reverse(text):
     if len(text)<=1:
         return text
     return reverse(text[1:])+text[0]
+
+def eshteZanore(ch):
+    return "aeiouAEIOU".count(ch)>0
+
+def numriZanoreve(fjala):
+    vlera=0
+    for ch in fjala:
+        if eshteZanore(ch):
+            vlera=vlera+1
+    return vlera
         
 #funksioni per opcionin konverto 
 def konverto(opcioni,numri):
@@ -72,10 +82,7 @@ def faktoriel(n):
         rez *= n
         n -= 1
     return rez
-def reverse(text):
-    if len(text)<=1:
-        return text
-    return reverse(text[1:])+text[0]
+
          
 mesazhiIP =str(getIP())
 mesazhiPORT = str(serverPort)
@@ -117,6 +124,10 @@ while 1:
         connectionSocket.send("Jep tekstin:".encode("ASCII"))
         text=connectionSocket.recv(1024).decode("ASCII")
         connectionSocket.send(str(reverse(text)).encode("ASCII"))
+    elif (opcioni=="ZANORE"):
+        connectionSocket.send("Fjala ose fjalia: ".encode("ASCII"))
+        fjala=connectionSocket.recv(1024).decode("ASCII")
+        connectionSocket.send(str(numriZanoreve(fjala)).decode("ASCII"))
     else:
         connectionSocket.send(mesazhinull.encode('ASCII'))
     connectionSocket.close()
